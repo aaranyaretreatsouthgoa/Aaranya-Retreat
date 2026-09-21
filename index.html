@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Aaranya — a private spiritual retreat sanctuary established in South Goa. Participation by invitation only.">
+<title>Aaranya | A Private Retreat Sanctuary in South Goa</title>
+<style>
+:root{
+  --ink:#243329; --muted:#66746a; --cream:#f7f3ea; --paper:#fcfaf5;
+  --sage:#879b87; --sand:#d9c7a7; --line:rgba(36,51,41,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
+h1,h2,h3,p{margin-top:0}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:400}
+a{text-decoration:none;color:inherit}
+
+/* Navigation */
+.nav{position:fixed;z-index:20;top:0;left:0;right:0;padding:20px 6vw;display:flex;align-items:center;justify-content:space-between;color:#fff;transition:.3s}
+.nav.scrolled{background:rgba(252,250,245,.95);color:var(--ink);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line)}
+.logo{font-family:Georgia,serif;font-size:25px;letter-spacing:5px}
+.navlinks{display:flex;gap:28px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase}
+.navlinks a:hover{opacity:.65}
+
+/* Hero Section */
+.hero{min-height:100vh;position:relative;display:grid;place-items:center;text-align:center;color:white;overflow:hidden;
+  background: linear-gradient(rgba(20,38,28,.45),rgba(20,38,28,.55)), url('https://images.unsplash.com/photo-1545232979-fbf592320b9e?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+}
+.hero-content{position:relative;max-width:850px;padding:100px 25px 60px}
+.kicker{text-transform:uppercase;letter-spacing:5px;font-size:11px;margin-bottom:25px;opacity:.9}
+.hero h1{font-size:clamp(64px,12vw,145px);letter-spacing:9px;margin-bottom:10px}
+.hero p{font-family:Georgia,serif;font-size:clamp(19px,2.2vw,28px);font-style:italic;max-width:650px;margin:0 auto 35px}
+.pill{display:inline-block;border:1px solid rgba(255,255,255,.6);padding:10px 19px;border-radius:999px;text-transform:uppercase;letter-spacing:2px;font-size:10px;background:rgba(0,0,0,0.2)}
+.cta{display:inline-block;margin-top:30px;background:#f5efe2;color:var(--ink);padding:15px 25px;font-size:11px;letter-spacing:2px;text-transform:uppercase;border-radius:2px;font-weight:bold;transition:background 0.3s}
+.cta:hover{background:#e8deca}
+
+/* Layout Utilities */
+.section{padding:110px 7vw}
+.center{text-align:center}
+.eyebrow{text-transform:uppercase;letter-spacing:3px;font-size:10px;color:var(--sage);margin-bottom:14px}
+.section h2{font-size:clamp(38px,5vw,60px);line-height:1.08;margin-bottom:20px}
+.lead{max-width:680px;margin:0 auto;color:var(--muted);font-size:17px}
+.philosophy{background:var(--cream)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:55px}
+
+/* Cards & Content */
+.card{padding:34px 30px;background:var(--paper);border:1px solid var(--line);min-height:220px;transition:transform 0.3s ease}
+.card:hover{transform:translateY(-4px)}
+.card h3{font-size:26px;margin-bottom:12px}
+.card p{color:var(--muted);font-size:14px}
+.number{font-family:Georgia,serif;color:var(--sand);font-size:17px}
+
+/* Stay Section */
+.stay{display:grid;grid-template-columns:1.05fr .95fr;min-height:620px}
+.visual{
+  background: url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+  min-height: 400px;
+}
+.stay-copy{padding:90px 8vw;background:#eee8dc;display:flex;flex-direction:column;justify-content:center}
+.stay-copy p{color:var(--muted);max-width:520px}
+.list{display:grid;grid-template-columns:1fr 1fr;gap:12px 25px;margin-top:22px;color:var(--ink);font-size:13px}
+.list div:before{content:"— ";color:var(--sage)}
+
+/* Dynamic Sanctuary Gallery */
+.gallery-section{background:var(--paper);padding:100px 7vw}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:20px;margin-top:40px}
+.gallery-item{height:300px;overflow:hidden;position:relative;cursor:pointer}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease}
+.gallery-item:hover img{transform:scale(1.05)}
+.gallery-caption{position:absolute;bottom:0;left:0;right:0;padding:15px;background:linear-gradient(transparent,rgba(0,0,0,0.7));color:#fff;font-size:12px;letter-spacing:1px;text-transform:uppercase}
+
+/* Quote/Testimonials Carousel Section */
+.quote{padding:120px 7vw;background:#304538;color:#f4efe4;text-align:center;position:relative}
+.quote-container{max-width:850px;margin:0 auto;min-height:180px;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.quote h2{font-size:clamp(28px,4vw,48px);margin:0 auto}
+.quote p{margin:25px auto 0;opacity:.75;font-family:Georgia,serif;font-style:italic}
+.quote-nav{margin-top:30px;display:flex;gap:10px;justify-content:center}
+.quote-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer}
+.quote-dot.active{background:#fff}
+
+/* Enquiry Form */
+.enquiry{background:var(--cream)}
+.form{max-width:720px;margin:45px auto 0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+label{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;display:block;margin-bottom:7px}
+input,select,textarea{width:100%;border:1px solid var(--line);background:rgba(255,255,255,.65);padding:14px;font:inherit;color:var(--ink);margin-bottom:18px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--sage)}
+textarea{min-height:135px;resize:vertical}
+button{border:0;background:var(--ink);color:#fff;padding:15px 24px;text-transform:uppercase;letter-spacing:2px;font-size:10px;cursor:pointer;transition:background 0.3s}
+button:hover{background:#304538}
+.email{margin-top:28px;font-family:Georgia,serif;font-size:20px}
+.form-success{display:none;background:#e2ece4;border:1px solid #879b87;color:#243329;padding:20px;text-align:center;margin-top:20px}
+
+/* Footer */
+.footer{padding:35px 7vw;display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);font-size:11px;color:var(--muted)}
+
+/* Lightbox Modal */
+.modal{display:none;position:fixed;z-index:100;inset:0;background:rgba(0,0,0,0.9);place-items:center;padding:20px}
+.modal.active{display:grid}
+.modal img{max-width:90vw;max-height:85vh;object-fit:contain}
+.modal-close{position:absolute;top:20px;right:30px;color:#fff;font-size:30px;cursor:pointer}
+
+@media(max-width:800px){
+ .nav{padding:16px 5vw}.navlinks{display:none}.logo{font-size:20px}
+ .section{padding:80px 6vw}.grid{grid-template-columns:1fr}.stay{grid-template-columns:1fr}
+ .visual{min-height:350px}.stay-copy{padding:70px 8vw}.row{grid-template-columns:1fr}
+ .footer{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a class="logo" href="#home">AARANYA</a>
+  <div class="navlinks">
+    <a href="#retreat">Retreat</a>
+    <a href="#experience">Experience</a>
+    <a href="#stay">Sanctuary</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#enquire">Enquire</a>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="hero-content">
+    <div class="kicker">South Goa · India · Est. 2018</div>
+    <h1>AARANYA</h1>
+    <p>A private sanctuary for stillness, inner exploration, and meaningful connection.</p>
+    <span class="pill">Participation by invitation only</span><br>
+    <a class="cta" href="#enquire">Request An Invitation</a>
+  </div>
+</header>
+
+<section class="section philosophy" id="retreat">
+  <div class="center">
+    <div class="eyebrow">The Sanctuary</div>
+    <h2>Return to what is essential.</h2>
+    <p class="lead">Aaranya is a quiet retreat destination tucked away in the lush jungle of South Goa — a sanctuary to step away from the noise of everyday life and enter space for reflection, presence, and renewal.</p>
+  </div>
+  <div class="grid">
+    <article class="card">
+      <div class="number">01</div>
+      <h3>Stillness</h3>
+      <p>Dedicated spaces and structured silence designed to quiet the mind, disconnect from distraction, and listen inward.</p>
+    </article>
+    <article class="card">
+      <div class="number">02</div>
+      <h3>Connection</h3>
+      <p>Intimate gatherings built around shared presence, deep inquiry, and a conscious, long-standing global community.</p>
+    </article>
+    <article class="card">
+      <div class="number">03</div>
+      <h3>Nature</h3>
+      <p>South Goa’s native tropical ecosystem forms the core of life here — unhurried, deeply grounding, and alive.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="experience">
+  <div class="center">
+    <div class="eyebrow">The Experience</div>
+    <h2>Less noise. More presence.</h2>
+    <p class="lead">Our seasonal retreats integrate daily practices that anchor a deeper connection with self, community, and the natural world.</p>
+  </div>
+  <div class="grid">
+    <article class="card"><h3>Yoga & Meditation</h3><p>Daily morning practice, guided meditation, and traditional silent immersions.</p></article>
+    <article class="card"><h3>Breath & Sound</h3><p>Pranayama, restorative sound baths, and contemplative inner practices.</p></article>
+    <article class="card"><h3>Nature Immersion</h3><p>Unhurried forest walks and river excursions guided through South Goa’s untouched terrain.</p></article>
+    <article class="card"><h3>Conscious Living</h3><p>Nourishing organic cuisine, traditional rituals, and intentional daily rhythms.</p></article>
+    <article class="card"><h3>Reflection</h3><p>Open library hours, personal integration time, and dedicated journal spaces.</p></article>
+    <article class="card"><h3>Community</h3><p>Small, curated gatherings where authentic human connection unfolds organically.</p></article>
+  </div>
+</section>
+
+<section class="stay" id="stay">
+  <div class="visual" aria-label="Aaranya Retreat Living Space"></div>
+  <div class="stay-copy">
+    <div class="eyebrow">Accommodations</div>
+    <h2>A slower way to stay.</h2>
+    <p>Living at Aaranya is private, serene, and seamlessly woven into its natural surrounds. Every cottage and room offers complete quietude and open-air integration.</p>
+    <div class="list">
+      <div>Private open-air villas</div>
+      <div>Native stone-and-wood architecture</div>
+      <div>Farm-to-table Ayurvedic dining</div>
+      <div>Dedicated meditation pavilions</div>
+      <div>All-inclusive retreat programming</div>
+      <div>Limited to 12 guests per session</div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section" id="gallery">
+  <div class="center">
+    <div class="eyebrow">Visual Impressions</div>
+    <h2>Life at Aaranya</h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80')">
+      <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80" alt="Meditation Space">
+      <div class="gallery-caption">The Shala</div>
+    </div>
+    <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1200&q=80')">
+      <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80" alt="Organic Dining">
+      <div class="gallery-caption">Conscious Dining</div>
+    </div>
+    <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80')">
+      <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80" alt="Villa Living">
+      <div class="gallery-caption">Cottages</div>
+    </div>
+  </div>
+</section>
+
+<section class="quote">
+  <div class="quote-container">
+    <h2 id="quoteText">“Come with nothing to prove. Leave with something within you.”</h2>
+    <p id="quoteAuthor">— Returning Resident, November 2023</p>
+  </div>
+  <div class="quote-nav">
+    <span class="quote-dot active" onclick="setQuote(0)"></span>
+    <span class="quote-dot" onclick="setQuote(1)"></span>
+    <span class="quote-dot" onclick="setQuote(2)"></span>
+  </div>
+</section>
+
+<section class="section enquiry" id="enquire">
+  <div class="center">
+    <div class="eyebrow">Enquiries & Invitations</div>
+    <h2>Begin with a conversation.</h2>
+    <p class="lead">Aaranya operates primarily by referral and invitation. If you hold an invitation or wish to inquire about current availability, please reach out below.</p>
+  </div>
+
+  <form class="form" id="enquiryForm">
+    <div class="row">
+      <div><label for="name">Full Name</label><input id="name" name="name" required></div>
+      <div><label for="email">Email Address</label><input id="email" name="email" type="email" required></div>
+    </div>
+    <div class="row">
+      <div>
+        <label for="date">Select Retreat Session</label>
+        <select id="date" name="date" required>
+          <option value="">Select an upcoming dates</option>
+          <option>October 12 – 18 (Autumn Integration)</option>
+          <option>December 01 – 08 (Winter Solstice)</option>
+          <option>February 14 – 21 (Spring Renewal)</option>
+          <option>Private Residence Request</option>
+        </select>
+      </div>
+      <div>
+        <label for="source">How were you referred?</label>
+        <select id="source" name="source">
+          <option value="">Select</option>
+          <option>Personal Invitation</option>
+          <option>Alumni Referral</option>
+          <option>Private Network</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+    <label for="message">Message / Intention</label>
+    <textarea id="message" name="message" placeholder="Share a few words on what brings you to Aaranya..."></textarea>
+    <button type="submit">Submit Enquiry</button>
+    <div class="form-success" id="formSuccess">Thank you. Your request has been transmitted. Our concierge will be in touch shortly.</div>
+    <div class="center email">aaranyaretreatsouthgoa@gmail.com</div>
+  </form>
+</section>
+
+<footer class="footer">
+  <div>© 2018–2026 AARANYA · South Goa, India</div>
+  <div>Invitation Only · All Rights Reserved</div>
+</footer>
+
+<div class="modal" id="modal" onclick="closeModal()">
+  <span class="modal-close">&times;</span>
+  <img id="modalImg" src="" alt="Enlarged View">
+</div>
+
+<script>
+// Navbar background scroll trigger
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+
+// Dynamic Testimonials
+const testimonials = [
+  { text: "“Come with nothing to prove. Leave with something within you.”", author: "— Returning Resident, November 2023" },
+  { text: "“Aaranya isn't just a physical place; it is a profound pause button in an overly loud world.”", author: "— Retreat Participant, Spring 2024" },
+  { text: "“The space, the food, and the sacred silence of South Goa created a sanctuary I return to every year.”", author: "— Resident Member, 2022" }
+];
+
+function setQuote(index) {
+  document.getElementById('quoteText').innerText = testimonials[index].text;
+  document.getElementById('quoteAuthor').innerText = testimonials[index].author;
+  const dots = document.querySelectorAll('.quote-dot');
+  dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+}
+
+// Image Lightbox Modal
+function openModal(src) {
+  document.getElementById('modalImg').src = src;
+  document.getElementById('modal').classList.add('active');
+}
+function closeModal() {
+  document.getElementById('modal').classList.remove('active');
+}
+
+// Form Submission handling
+document.getElementById('enquiryForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const form = e.target;
+  const successMsg = document.getElementById('formSuccess');
+  
+  const f = new FormData(form);
+  const subject = encodeURIComponent('Aaranya Retreat Enquiry');
+  const body = encodeURIComponent(
+`Name: ${f.get('name')}
+Email: ${f.get('email')}
+Preferred session: ${f.get('date')}
+Referral source: ${f.get('source')}
+
+Message:
+${f.get('message')}`);
+
+  // Display success state in UI
+  successMsg.style.display = 'block';
+  
+  // Trigger mail client as fallback backup
+  setTimeout(() => {
+    window.location.href = `mailto:aaranyaretreatsouthgoa@gmail.com?subject=${subject}&body=${body}`;
+  }, 1000);
+});
+</script>
+</body>
+</html>
